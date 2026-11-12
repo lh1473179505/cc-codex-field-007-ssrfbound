@@ -59,8 +59,8 @@ def main(argv: list[str] | None = None) -> int:
 
         try:
             report = check_url(args.url, policy, resolver)
-        except NotImplementedError as exc:
-            print(str(exc), file=sys.stderr)
+        except Exception as exc:
+            print(f"check failed: {exc}", file=sys.stderr)
             return 2
         return _write_report(args.report, report)
 
@@ -74,8 +74,8 @@ def main(argv: list[str] | None = None) -> int:
             return 2
         try:
             report = fetch_url(args.url, policy, resolver, http, args.out)
-        except NotImplementedError as exc:
-            print(str(exc), file=sys.stderr)
+        except Exception as exc:
+            print(f"fetch failed: {exc}", file=sys.stderr)
             return 2
         return _write_report(args.report, report)
 
