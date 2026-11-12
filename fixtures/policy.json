@@ -1,0 +1,50 @@
+{
+  "allowed_ports": [80, 443, 8080],
+  "blocked_schemes": [
+    "file",
+    "gopher",
+    "dict",
+    "ftp",
+    "sftp",
+    "tftp",
+    "ldap",
+    "unix",
+    "jar",
+    "netdoc"
+  ],
+  "blocked_cidrs": [
+    "0.0.0.0/8",
+    "10.0.0.0/8",
+    "127.0.0.0/8",
+    "169.254.0.0/16",
+    "172.16.0.0/12",
+    "192.168.0.0/16",
+    "224.0.0.0/4",
+    "255.255.255.255/32",
+    "::1/128",
+    "::/128",
+    "fc00::/7",
+    "fe80::/10"
+  ],
+  "lab_public_cidrs": [
+    "198.51.100.0/24",
+    "2001:db8:1::/64"
+  ],
+  "blocked_hostnames": [
+    "localhost",
+    "metadata.google.internal",
+    "metadata.internal",
+    "kubernetes.default"
+  ],
+  "blocked_hostname_suffixes": [
+    ".localhost",
+    ".local",
+    ".internal",
+    ".corp"
+  ],
+  "metadata_ipv4": [
+    "169.254.169.254",
+    "169.254.170.2"
+  ],
+  "max_redirects": 3
+}

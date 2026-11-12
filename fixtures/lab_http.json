@@ -1,0 +1,243 @@
+{
+  "servers": [
+    {
+      "ip": "198.51.100.10",
+      "port": 80,
+      "routes": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "public-home"
+        },
+        {
+          "path": "/go",
+          "status": 302,
+          "headers": {
+            "Location": "http://127.0.0.1/secret",
+            "Content-Type": "text/plain"
+          },
+          "body": "redirecting"
+        },
+        {
+          "path": "/to-meta",
+          "status": 302,
+          "headers": {
+            "Location": "http://169.254.169.254/latest/meta-data/",
+            "Content-Type": "text/plain"
+          },
+          "body": "redirecting"
+        },
+        {
+          "path": "/to-intranet",
+          "status": 302,
+          "headers": {
+            "Location": "http://intranet.lab/secret",
+            "Content-Type": "text/plain"
+          },
+          "body": "redirecting"
+        },
+        {
+          "path": "/hop1",
+          "status": 302,
+          "headers": {
+            "Location": "http://images.lab/hop2",
+            "Content-Type": "text/plain"
+          },
+          "body": "hop1"
+        },
+        {
+          "path": "/final",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "ok-final"
+        },
+        {
+          "path": "/loop",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/loop",
+            "Content-Type": "text/plain"
+          },
+          "body": "loop"
+        },
+        {
+          "path": "/chain1",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/chain2",
+            "Content-Type": "text/plain"
+          },
+          "body": "c1"
+        },
+        {
+          "path": "/chain2",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/chain3",
+            "Content-Type": "text/plain"
+          },
+          "body": "c2"
+        },
+        {
+          "path": "/chain3",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/chain4",
+            "Content-Type": "text/plain"
+          },
+          "body": "c3"
+        },
+        {
+          "path": "/chain4",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "too-deep"
+        },
+        {
+          "path": "/deep1",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/deep2",
+            "Content-Type": "text/plain"
+          },
+          "body": "d1"
+        },
+        {
+          "path": "/deep2",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/deep3",
+            "Content-Type": "text/plain"
+          },
+          "body": "d2"
+        },
+        {
+          "path": "/deep3",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/deep4",
+            "Content-Type": "text/plain"
+          },
+          "body": "d3"
+        },
+        {
+          "path": "/deep4",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/final",
+            "Content-Type": "text/plain"
+          },
+          "body": "d4"
+        }
+      ]
+    },
+    {
+      "ip": "198.51.100.10",
+      "port": 8080,
+      "routes": [
+        {
+          "path": "/alt",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "alt-port"
+        }
+      ]
+    },
+    {
+      "ip": "198.51.100.11",
+      "port": 80,
+      "routes": [
+        {
+          "path": "/hop2",
+          "status": 302,
+          "headers": {
+            "Location": "http://public.lab/final",
+            "Content-Type": "text/plain"
+          },
+          "body": "hop2"
+        }
+      ]
+    },
+    {
+      "ip": "2001:db8:1::10",
+      "port": 80,
+      "routes": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "v6-home"
+        }
+      ]
+    },
+    {
+      "ip": "10.1.2.3",
+      "port": 80,
+      "routes": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "intranet-home"
+        },
+        {
+          "path": "/secret",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "intranet-secret"
+        }
+      ]
+    },
+    {
+      "ip": "127.0.0.1",
+      "port": 80,
+      "routes": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "loopback-home"
+        },
+        {
+          "path": "/secret",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "loopback-secret"
+        }
+      ]
+    },
+    {
+      "ip": "169.254.169.254",
+      "port": 80,
+      "routes": [
+        {
+          "path": "/latest/meta-data/",
+          "status": 200,
+          "headers": {
+            "Content-Type": "text/plain"
+          },
+          "body": "ami-id"
+        }
+      ]
+    }
+  ]
+}
